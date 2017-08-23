@@ -2,12 +2,18 @@ package application;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import datamodel.TodoItem;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextArea;
 
 public class Controller 
 {
@@ -16,6 +22,12 @@ public class Controller
 	
 	@FXML
 	private ListView<TodoItem> todoListView;
+	
+	@FXML
+	private TextArea itemDetailsTextArea;
+	
+	@FXML
+	private Label deadlineLabel;
 	
 	public void initialize()
 	{
@@ -33,8 +45,38 @@ public class Controller
 		todoItems.add(item4);
 		todoItems.add(item5);
 		
+		//Listener of changing items in the list - works for start of program also (no item marked at beginning)
+		todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
+			@Override
+			public void changed(ObservableValue<? extends TodoItem> observable, TodoItem oldValue, TodoItem newValue) {
+				// TODO Auto-generated method stub
+				if(newValue != null)
+				{
+					TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+					itemDetailsTextArea.setText(item.getFullDescription());
+					DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+					deadlineLabel.setText(dtFormatter.format(item.getDeadline()));
+				}
+			}
+		});
+		
 		todoListView.getItems().setAll(todoItems);
-		todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);	
+		//Select first item when application starts.
+		todoListView.getSelectionModel().selectFirst();
+	}
+	
+	//Handler for the click list view
+	@FXML
+	public void handleClickListView()
+	{
+		//Selection of list item
+		TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+		//Display detailed description 
+		itemDetailsTextArea.setText(item.getFullDescription());
+		//Display Due date
+		deadlineLabel.setText(item.getDeadline().toString());
+
 	}
 
 }

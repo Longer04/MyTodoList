@@ -2,19 +2,49 @@
 
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:controller="application.Controller"
 			xmlns:fx="http://javafx.com/fxml/1">
 
 	<left>
-		<ListView fx:id="todoListView">
+		<ListView fx:id="todoListView" >
 			
 		</ListView>
 	</left>
 	
+	<center>
+		<VBox style="-fx-background-color: white">
+				<TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS"/>
+				<HBox>
+					<Label text="Due: " style="-fx-background-color:white">
+						<font>
+							<Font name="Times New Roman bold" size="25"/>
+						</font>
+					</Label>
+					<Label fx:id="deadlineLabel" style="-fx-background-color:white">
+						<font>
+							<Font name="Times New Roman bold" size="25"/>
+						</font>
+					</Label>
+				</HBox>
+		</VBox>
+	</center>
+	
+	<!-- Done
+	
+	Added text area for description
+	Added VBox for Due date + visual adjustment
+	Added General change listener for items in list
+	
+	 -->
 	<!-- TODO Add Nodes 
 	
-	add text area to display detailed description
+	add possibility to store some data an have it for next program run
 	
 	-->
 	
