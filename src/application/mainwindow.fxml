@@ -37,14 +37,19 @@
 	
 	<!-- Done
 	
+	23/08/17
 	Added text area for description
 	Added VBox for Due date + visual adjustment
 	Added General change listener for items in list
+	Added DateTimeFormatter
+	
+	26/08/17
+	Created Singleton class that allows to read&write Todo items - to simplify this app
 	
 	 -->
 	<!-- TODO Add Nodes 
 	
-	add possibility to store some data an have it for next program run
+	start using TodoData to save/load items in the list
 	
 	-->
 	
