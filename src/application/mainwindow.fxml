@@ -7,10 +7,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 
 <BorderPane fx:controller="application.Controller"
 			xmlns:fx="http://javafx.com/fxml/1">
-
+			
+	<top>
+		<MenuBar>
+			<Menu text="File">
+				<items>
+					<MenuItem text="New..."/>
+					<SeparatorMenuItem />
+					<MenuItem text="Exit"/>
+				</items>
+			</Menu>
+		</MenuBar>
+	</top>
 	<left>
 		<ListView fx:id="todoListView" >
 			
@@ -46,10 +61,18 @@
 	26/08/17
 	Created Singleton class that allows to read&write Todo items - to simplify this app
 	
+	27/08/17
+	Moved hard coded items to the list by program
+	Changed bw string format to avoid upper case format.
+	Added Menu items
+	
+	27/08/17
+	Added Dialog that accepts short description, full description, and details + adding it to the list
+	
 	 -->
 	<!-- TODO Add Nodes 
 	
-	start using TodoData to save/load items in the list
+	create listeneres for menu items
 	
 	-->
 	

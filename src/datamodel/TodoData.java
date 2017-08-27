@@ -41,15 +41,20 @@ public class TodoData
 		return todoItems;
 	}
 
+	/** Used only for first release of hard coded items
 	public void setTodoItems(List<TodoItem> todoItems) {
 		this.todoItems = todoItems;
 	}
+	*/
 
 	//Loading items from the file.
 	public void loadTodoItems() throws IOException
 	{
+		//use observableArrayList because in controller setAll method
 		todoItems = FXCollections.observableArrayList();
+		//using Path for get path to file to load 
 		Path path = Paths.get(filename);
+		//creating new buffered reader for particular file
 		BufferedReader br = Files.newBufferedReader(path);
 		
 		String input;
@@ -97,7 +102,7 @@ public class TodoData
 			while(iterator1.hasNext())
 			{
 				TodoItem item = iterator1.next();
-				bw.write(String.format("%s\t%S\t%s\t",
+				bw.write(String.format("%s\t%s\t%s\t",
 						item.getShortDescription(),
 						item.getFullDescription(),
 						item.getDeadline().format(formatter)));

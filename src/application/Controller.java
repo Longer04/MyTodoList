@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
+
+import datamodel.TodoData;
 import datamodel.TodoItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -31,6 +33,8 @@ public class Controller
 	
 	public void initialize()
 	{
+		/**
+		 * This was initial hard coded information to todo list.
 		TodoItem item1 = new TodoItem("Medical Examination", "Go to doctor for medical tests", LocalDate.of(2017, Month.SEPTEMBER, 25));
 		TodoItem item2 = new TodoItem("Dentist appointment", "Review of teeth", LocalDate.of(2017, Month.OCTOBER, 25));
 		TodoItem item3 = new TodoItem("Exam for drivers licence", "theoretical exam for drivers licence", LocalDate.of(2017, Month.SEPTEMBER, 28));
@@ -44,6 +48,10 @@ public class Controller
 		todoItems.add(item3);
 		todoItems.add(item4);
 		todoItems.add(item5);
+		
+		TodoData.getInstance().setTodoItems(todoItems);
+		
+		*/
 		
 		//Listener of changing items in the list - works for start of program also (no item marked at beginning)
 		todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
@@ -60,7 +68,8 @@ public class Controller
 			}
 		});
 		
-		todoListView.getItems().setAll(todoItems);
+		//Changed method to get data from the file
+		todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
 		todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);	
 		//Select first item when application starts.
 		todoListView.getSelectionModel().selectFirst();
