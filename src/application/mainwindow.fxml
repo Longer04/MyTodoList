@@ -12,14 +12,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 
-<BorderPane fx:controller="application.Controller"
+<BorderPane fx:id="mainBorderPane" fx:controller="application.Controller"
 			xmlns:fx="http://javafx.com/fxml/1">
 			
 	<top>
 		<MenuBar>
 			<Menu text="File">
 				<items>
-					<MenuItem text="New..."/>
+					<MenuItem text="New..." onAction="#showNewItemDialog"/>
 					<SeparatorMenuItem />
 					<MenuItem text="Exit"/>
 				</items>
@@ -65,14 +65,18 @@
 	Moved hard coded items to the list by program
 	Changed bw string format to avoid upper case format.
 	Added Menu items
-	
-	27/08/17
 	Added Dialog that accepts short description, full description, and details + adding it to the list
+	
+	28/08/2017
+	Loaded and assigned DialogPane - to add new item to todo List
+	Added Buttons to DialogPane
+	Added code to gather information from dialogue controls when user clicks OK
+	Saved input from dialogPane to file
 	
 	 -->
 	<!-- TODO Add Nodes 
 	
-	create listeneres for menu items
+	Create automatic update of list view.
 	
 	-->
 	

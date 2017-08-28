@@ -40,12 +40,11 @@ public class TodoData
 	public List<TodoItem> getTodoItems() {
 		return todoItems;
 	}
-
-	/** Used only for first release of hard coded items
-	public void setTodoItems(List<TodoItem> todoItems) {
-		this.todoItems = todoItems;
+	
+	public void addTodoItem(TodoItem item)
+	{
+		todoItems.add(item);
 	}
-	*/
 
 	//Loading items from the file.
 	public void loadTodoItems() throws IOException
@@ -116,6 +115,8 @@ public class TodoData
 			}
 		}
 	}
+	
+
 	
 	
 	

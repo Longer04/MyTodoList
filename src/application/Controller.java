@@ -1,21 +1,23 @@
 package application;
 
-import java.time.LocalDate;
-import java.time.Month;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import datamodel.TodoData;
 import datamodel.TodoItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 
 public class Controller 
 {
@@ -31,28 +33,11 @@ public class Controller
 	@FXML
 	private Label deadlineLabel;
 	
+	@FXML
+	private BorderPane mainBorderPane;
+	
 	public void initialize()
-	{
-		/**
-		 * This was initial hard coded information to todo list.
-		TodoItem item1 = new TodoItem("Medical Examination", "Go to doctor for medical tests", LocalDate.of(2017, Month.SEPTEMBER, 25));
-		TodoItem item2 = new TodoItem("Dentist appointment", "Review of teeth", LocalDate.of(2017, Month.OCTOBER, 25));
-		TodoItem item3 = new TodoItem("Exam for drivers licence", "theoretical exam for drivers licence", LocalDate.of(2017, Month.SEPTEMBER, 28));
-		TodoItem item4 = new TodoItem("Birthday party", "Maria Party", LocalDate.of(2017, Month.JULY, 20));
-		TodoItem item5 = new TodoItem("Watch movie", "Superman", LocalDate.of(2017, Month.SEPTEMBER, 1));
-		
-		
-		todoItems = new ArrayList<>();
-		todoItems.add(item1);
-		todoItems.add(item2);
-		todoItems.add(item3);
-		todoItems.add(item4);
-		todoItems.add(item5);
-		
-		TodoData.getInstance().setTodoItems(todoItems);
-		
-		*/
-		
+	{		
 		//Listener of changing items in the list - works for start of program also (no item marked at beginning)
 		todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
 			@Override
@@ -73,6 +58,42 @@ public class Controller
 		todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);	
 		//Select first item when application starts.
 		todoListView.getSelectionModel().selectFirst();
+	}
+	
+	@FXML
+	public void showNewItemDialog()
+	{
+		Dialog<ButtonType> dialog = new Dialog<>();
+		//Ensure that when dialog is pop up user can interact only with dialog window
+		dialog.initOwner(mainBorderPane.getScene().getWindow());
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(getClass().getResource("todoItemDialog.fxml"));
+		try
+		{
+			//Loading the FXML of todoItemDialog
+			dialog.getDialogPane().setContent(fxmlLoader.load());
+		} catch(IOException ex)
+		{
+			System.out.println("Couldn't load the dialog");
+			ex.printStackTrace();
+			return;
+		}
+		//Added OK/Cancel buttons
+		dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+		dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+		
+		Optional<ButtonType> result = dialog.showAndWait();
+		if(result.isPresent() && result.get() == ButtonType.OK)
+		{
+			//Adding controller and processing results
+			DialogController controller = fxmlLoader.getController();
+			controller.processResults();
+			System.out.println("OK button pressed.");
+		}
+		else
+		{
+			System.out.println("Cancel button pressed.");
+		}
 	}
 	
 	//Handler for the click list view
