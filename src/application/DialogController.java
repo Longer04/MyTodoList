@@ -23,13 +23,16 @@ public class DialogController
 	
 	//Reacting on OK button
 	//Gathering the input -> creating new item -> adding to list
-	public void processResults()
+	public TodoItem processResults()
 	{
 		String shortDescription = shortDescriptionField.getText().trim();
 		String details = detailsDescriptionField.getText().trim();
 		LocalDate deadlineValue = deadlinePick.getValue();
 		
-		TodoData.getInstance().addTodoItem(new TodoItem(shortDescription, details, deadlineValue));
+		//Creating item and adding it to singleton instance.
+		TodoItem newItem = new TodoItem(shortDescription, details, deadlineValue);
+		TodoData.getInstance().addTodoItem(newItem);
+		return newItem;
 	}
 
 }

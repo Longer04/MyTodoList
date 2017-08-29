@@ -73,10 +73,15 @@
 	Added code to gather information from dialogue controls when user clicks OK
 	Saved input from dialogPane to file
 	
+	29/08/2017
+	Added header to new item dialog
+	Added automatic update of list view
+	
 	 -->
 	<!-- TODO Add Nodes 
 	
-	Create automatic update of list view.
+	Improve way of populating items 
+	try to use observable collection
 	
 	-->
 	

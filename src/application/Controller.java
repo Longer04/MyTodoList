@@ -66,6 +66,8 @@ public class Controller
 		Dialog<ButtonType> dialog = new Dialog<>();
 		//Ensure that when dialog is pop up user can interact only with dialog window
 		dialog.initOwner(mainBorderPane.getScene().getWindow());
+		dialog.setTitle("Add New Todo Item");
+		dialog.setHeaderText("Use this dialog to create new todo item.");
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		fxmlLoader.setLocation(getClass().getResource("todoItemDialog.fxml"));
 		try
@@ -87,7 +89,11 @@ public class Controller
 		{
 			//Adding controller and processing results
 			DialogController controller = fxmlLoader.getController();
-			controller.processResults();
+			TodoItem newItem = controller.processResults();
+			//Updating the list view to show instantly the new item.
+			todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
+			//Selecting new Item when created
+			todoListView.getSelectionModel().select(newItem);
 			System.out.println("OK button pressed.");
 		}
 		else
