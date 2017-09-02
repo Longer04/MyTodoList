@@ -53,8 +53,8 @@ public class Controller
 			}
 		});
 		
-		//Changed method to get data from the file
-		todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
+		//Changed method to setItems from observable List
+		todoListView.setItems(TodoData.getInstance().getTodoItems());
 		todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);	
 		//Select first item when application starts.
 		todoListView.getSelectionModel().selectFirst();
@@ -90,15 +90,8 @@ public class Controller
 			//Adding controller and processing results
 			DialogController controller = fxmlLoader.getController();
 			TodoItem newItem = controller.processResults();
-			//Updating the list view to show instantly the new item.
-			todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
 			//Selecting new Item when created
 			todoListView.getSelectionModel().select(newItem);
-			System.out.println("OK button pressed.");
-		}
-		else
-		{
-			System.out.println("Cancel button pressed.");
 		}
 	}
 	

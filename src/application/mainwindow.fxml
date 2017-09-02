@@ -34,7 +34,7 @@
 	
 	<center>
 		<VBox style="-fx-background-color: white">
-				<TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS"/>
+				<TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true"/>
 				<HBox>
 					<Label text="Due: " style="-fx-background-color:white">
 						<font>
@@ -63,7 +63,7 @@
 	
 	27/08/17
 	Moved hard coded items to the list by program
-	Changed bw string format to avoid upper case format.
+	Changed bufferwriter string format to avoid upper case format.
 	Added Menu items
 	Added Dialog that accepts short description, full description, and details + adding it to the list
 	
@@ -76,12 +76,15 @@
 	29/08/2017
 	Added header to new item dialog
 	Added automatic update of list view
+	Added Cell factory - sets color for text
 	
+	02/09/2017
+	Data Binding of controller data
+	Added Wrapping of text
 	 -->
 	<!-- TODO Add Nodes 
 	
-	Improve way of populating items 
-	try to use observable collection
+	Add some visualization for deadline
 	
 	-->
 	

@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 //Singleton example to simplify example of todo list
 //If any part of application wants to access the data it has to call TodoData.getInstance.getTodoItems
@@ -20,7 +21,8 @@ public class TodoData
 	private static TodoData instance = new TodoData();
 	private static String filename = "TodoListItems.txt";
 	
-	private List<TodoItem> todoItems;
+	
+	private ObservableList<TodoItem> todoItems;
 	private DateTimeFormatter formatter;
 	
 	
@@ -37,7 +39,7 @@ public class TodoData
 	}
 
 	//Setter & Getter for items in the list.
-	public List<TodoItem> getTodoItems() {
+	public ObservableList<TodoItem> getTodoItems() {
 		return todoItems;
 	}
 	
