@@ -81,10 +81,14 @@
 	02/09/2017
 	Data Binding of controller data
 	Added Wrapping of text
+	
+	03/09/2017
+	Created Cell factory
+	Added deadline visualization - red when today or before, violet when tomorrow
 	 -->
 	<!-- TODO Add Nodes 
 	
-	Add some visualization for deadline
+	Add possibility to delete items
 	
 	-->
 	
