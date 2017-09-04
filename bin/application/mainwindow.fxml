@@ -85,10 +85,15 @@
 	03/09/2017
 	Created Cell factory
 	Added deadline visualization - red when today or before, violet when tomorrow
+	
+	04/09/2017
+	Added pop-up menu for deleting item (context menu) - rightclick
+	Added confirmation dialog for deleting item
+	
 	 -->
 	<!-- TODO Add Nodes 
 	
-	Add possibility to delete items
+	Add possibility to delete items with delete key from keyboard
 	
 	-->
 	

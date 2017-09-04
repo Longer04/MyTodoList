@@ -118,6 +118,12 @@ public class TodoData
 		}
 	}
 	
+	//Removing item from list
+	public void deleteTodoItem(TodoItem item)
+	{
+		todoItems.remove(item);
+	}
+	
 
 	
 	
