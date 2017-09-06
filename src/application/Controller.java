@@ -24,6 +24,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
@@ -161,6 +163,20 @@ public class Controller
 			TodoItem newItem = controller.processResults();
 			//Selecting new Item when created
 			todoListView.getSelectionModel().select(newItem);
+		}
+	}
+	
+	//Deleting with keyboard delete key
+	@FXML
+	public void handleKeyPressed(KeyEvent keyEvent)
+	{
+		TodoItem selectedItem = todoListView.getSelectionModel().getSelectedItem();
+		if(selectedItem != null)
+		{
+			if(keyEvent.getCode().equals(KeyCode.DELETE))
+			{
+				deleteItem(selectedItem);
+			}
 		}
 	}
 	

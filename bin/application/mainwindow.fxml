@@ -27,7 +27,7 @@
 		</MenuBar>
 	</top>
 	<left>
-		<ListView fx:id="todoListView" >
+		<ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
 			
 		</ListView>
 	</left>
@@ -90,10 +90,12 @@
 	Added pop-up menu for deleting item (context menu) - rightclick
 	Added confirmation dialog for deleting item
 	
+	06/09/2017
+	Added possibility to delete with delete key keyboard
+	
 	 -->
 	<!-- TODO Add Nodes 
 	
-	Add possibility to delete items with delete key from keyboard
 	
 	-->
 	

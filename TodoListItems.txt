@@ -1,8 +1,6 @@
 Medical Examination	GO TO DOCTOR FOR MEDICAL TESTS	25-09-2017	
 Dentist appointment	REVIEW OF TEETH	25-10-2017	
 Exam for drivers licence	THEORETICAL EXAM FOR DRIVERS LICENCE	28-09-2017	
-Watch movie	SUPERMAN	01-09-2017	
-Some Test Item 1	Test1	09-09-2017	
 Test Item 2	Test 2	10-09-2017	
 oj	hjkl	19-09-2017	
 test3	3	30-08-2017	
